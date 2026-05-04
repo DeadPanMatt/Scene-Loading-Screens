@@ -40,6 +40,34 @@
   margin-bottom: 0.6rem;
 }
 
+.sls-config .sls-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sls-config .sls-volume-row input[type="range"] {
+  flex: 1 1 auto;
+}
+
+.sls-config .sls-volume-row .fa-volume-down,
+.sls-config .sls-volume-row .fa-volume-up {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sls-config .sls-volume-row .fa-volume-down:hover,
+.sls-config .sls-volume-row .fa-volume-up:hover {
+  color: #d2bf6d;
+}
+
+.sls-config .sls-volume-display {
+  flex: 0 0 auto;
+  min-width: 3.2em;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
 #sls-overlay {
   position: fixed;
   inset: 0;
@@ -376,19 +404,16 @@ display: grid;
 
 .sls-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
   padding-top: 0.5rem;
-}
-
-.sls-footer-left,
-.sls-footer-right {
-  display: flex;
-  align-items: center;
 }
 
 .sls-footer button {
   min-width: 100px;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;

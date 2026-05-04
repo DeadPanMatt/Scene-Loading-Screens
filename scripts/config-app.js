@@ -17,7 +17,8 @@ export const FACTORY_DEFAULTS = {
   loop: true,
   duration: null,
   fadeIn: 500,
-  fadeOut: 500
+  fadeOut: 500,
+  volume: 1
 };
 
 function getDefaults() {
@@ -126,6 +127,10 @@ export class LoadingScreenConfigApp extends HandlebarsApplicationMixin(Applicati
     data.textVerticalAlignTop = data.textVerticalAlign === "top";
     data.textVerticalAlignMiddle = data.textVerticalAlign === "middle";
     data.textVerticalAlignBottom = data.textVerticalAlign === "bottom";
+
+    const vol = Number(data.volume);
+    data.volume = Number.isFinite(vol) ? Math.min(1, Math.max(0, vol)) : FACTORY_DEFAULTS.volume;
+    data.volumePercent = Math.round(data.volume * 100);
     const presets = game.settings.get(MODULE_ID, "presets") ?? [];
 
     return {
@@ -249,6 +254,50 @@ export class LoadingScreenConfigApp extends HandlebarsApplicationMixin(Applicati
       });
     });
 
+    const volumeInput = this.element.querySelector('input[name="volume"]');
+    const volumeDisplay = this.element.querySelector(".sls-volume-display");
+    if (volumeInput && volumeDisplay) {
+      volumeInput.addEventListener("input", () => {
+        const pct = Math.round((Number(volumeInput.value) || 0) * 100);
+        volumeDisplay.textContent = `${pct}%`;
+      });
+    }
+
+    const stepVolume = (delta) => {
+      if (!volumeInput) return;
+      const current = Number(volumeInput.value) || 0;
+      const next = Math.min(1, Math.max(0, Math.round((current + delta) * 100) / 100));
+      if (next === current) return;
+      volumeInput.value = String(next);
+      volumeInput.dispatchEvent(new Event("input", { bubbles: true }));
+    };
+
+    const attachVolumeHold = (selector, delta) => {
+      const icon = this.element.querySelector(selector);
+      if (!icon) return;
+      let holdTimeout = null;
+      let repeatInterval = null;
+      const stop = () => {
+        if (holdTimeout) { clearTimeout(holdTimeout); holdTimeout = null; }
+        if (repeatInterval) { clearInterval(repeatInterval); repeatInterval = null; }
+      };
+      icon.addEventListener("mousedown", (e) => {
+        if (e.button !== 0) return;
+        e.preventDefault();
+        stepVolume(delta);
+        holdTimeout = setTimeout(() => {
+          repeatInterval = setInterval(() => stepVolume(delta), 50);
+        }, 400);
+      });
+      icon.addEventListener("mouseup", stop);
+      icon.addEventListener("mouseleave", stop);
+      icon.addEventListener("blur", stop);
+      window.addEventListener("mouseup", stop);
+    };
+
+    attachVolumeHold(".sls-volume-row .fa-volume-down", -0.01);
+    attachVolumeHold(".sls-volume-row .fa-volume-up", 0.01);
+
     sync();
     updateToolbarState();
   }
@@ -270,7 +319,11 @@ export class LoadingScreenConfigApp extends HandlebarsApplicationMixin(Applicati
       loop: !!raw.loop,
       duration: raw.duration === "" || raw.duration == null ? null : Number(raw.duration),
       fadeIn: Math.max(0, Number(raw.fadeIn) || 0),
-      fadeOut: Math.max(0, Number(raw.fadeOut) || 0)
+      fadeOut: Math.max(0, Number(raw.fadeOut) || 0),
+      volume: (() => {
+        const v = raw.volume === "" || raw.volume == null ? FACTORY_DEFAULTS.volume : Number(raw.volume);
+        return Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : FACTORY_DEFAULTS.volume;
+      })()
     };
   }
 

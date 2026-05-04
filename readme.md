@@ -33,6 +33,7 @@ You can add:
 * **Image** (background)
 * **Video** (autoplays)
 * **Audio** (optional, loops if enabled)
+* **Volume** adjusts the volume level of slected media on a scale of 0-100
 
 Use the 📁 button to browse files.
 
@@ -98,6 +99,7 @@ Presets are managed from Foundry’s settings menu:
 * Click **Save**
 
 Once created, presets can be loaded when configuring a scene loading screen.
+
 ---
 
 ## 🧠 Tips

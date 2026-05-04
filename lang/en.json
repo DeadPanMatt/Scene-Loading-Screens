@@ -18,6 +18,7 @@
   "SLS.FieldImage": "Picture",
   "SLS.FieldVideo": "Video",
   "SLS.FieldAudio": "Audio",
+  "SLS.FieldVolume": "Volume",
   "SLS.FieldFit": "Picture / video fit",
   "SLS.FieldText": "Overlay text",
   "SLS.FieldFontSize": "Font size",
@@ -42,6 +43,9 @@
   "SLS.TextPlaceholder": "Text shown over the picture (line breaks preserved).",
   "SLS.DurationPlaceholder": "Leave blank for manual close",
   "SLS.AudioHint": "If set, the video will be muted and this audio file plays instead.",
+  "SLS.VolumeHint": "Playback volume for the video and audio (0–100%).",
+  "SLS.VolumeDownTooltip": "Click and hold to keep decreasing.",
+  "SLS.VolumeUpTooltip": "Click and hold to keep increasing.",
   "SLS.FitHint": "How the picture and video fill the screen.",
   "SLS.DurationHint": "Seconds. Leave blank to require the GM to close it manually.",
 

@@ -31,6 +31,9 @@ export class Overlay {
       el.appendChild(img);
     }
 
+    const rawVol = Number(config.volume);
+    const volume = Number.isFinite(rawVol) ? Math.min(1, Math.max(0, rawVol)) : 1;
+
     if (config.video) {
       const video = document.createElement("video");
       video.classList.add("sls-video");
@@ -38,6 +41,7 @@ export class Overlay {
       video.autoplay = true;
       video.loop = !!config.loop;
       video.muted = !!config.audio;
+      video.volume = volume;
       video.playsInline = true;
       el.appendChild(video);
       video.play().catch(err => console.warn(`${MODULE_ID} | video autoplay blocked`, err));
@@ -48,6 +52,7 @@ export class Overlay {
       audio.classList.add("sls-audio");
       audio.src = config.audio;
       audio.loop = !!config.loop;
+      audio.volume = volume;
       el.appendChild(audio);
       audio.play().catch(err => console.warn(`${MODULE_ID} | audio autoplay blocked`, err));
     }
