@@ -1,0 +1,219 @@
+<section class="sls-form">
+
+{{#if isPresetMode}}
+<div class="form-group sls-preset-name-row">
+  <label>{{localize "SLS.PresetName"}}</label>
+  <div class="form-fields">
+    <input type="text" name="presetName" value="{{presetName}}" />
+  </div>
+</div>
+{{else}}
+{{#if hasPresets}}
+<div class="form-group sls-preset-loader">
+  <label>{{localize "SLS.LoadPreset"}}</label>
+  <div class="form-fields">
+    <select class="sls-preset-select">
+      <option value="">— {{localize "SLS.SelectPreset"}} —</option>
+      {{#each presets}}
+      <option value="{{id}}">{{name}}</option>
+      {{/each}}
+    </select>
+    <button type="button" data-action="loadPreset" data-tooltip="{{localize 'SLS.LoadPresetTooltip'}}">
+      <i class="fa-solid fa-download"></i>
+    </button>
+  </div>
+</div>
+{{/if}}
+{{/if}}
+
+<fieldset class="sls-section">
+    <legend>Media</legend>
+
+  <div class="form-group">
+    <label>{{localize "SLS.FieldImage"}}</label>
+    <div class="form-fields sls-file-row">
+      <input type="text" name="image" value="{{data.image}}" placeholder="{{localize 'SLS.PathPlaceholder'}}" />
+      <button type="button" class="sls-browse" data-action="pickFile" data-target="image" data-tooltip="{{localize 'SLS.Browse'}}">
+        <i class="fa-solid fa-folder-open"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "SLS.FieldVideo"}}</label>
+    <div class="form-fields sls-file-row">
+      <input type="text" name="video" value="{{data.video}}" placeholder="{{localize 'SLS.PathPlaceholder'}}" />
+      <button type="button" class="sls-browse" data-action="pickFile" data-target="video" data-tooltip="{{localize 'SLS.Browse'}}">
+        <i class="fa-solid fa-folder-open"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "SLS.FieldAudio"}}</label>
+    <div class="form-fields sls-file-row">
+      <input type="text" name="audio" value="{{data.audio}}" placeholder="{{localize 'SLS.PathPlaceholder'}}" />
+      <button type="button" class="sls-browse" data-action="pickFile" data-target="audio" data-tooltip="{{localize 'SLS.Browse'}}">
+        <i class="fa-solid fa-folder-open"></i>
+      </button>
+    </div>
+    <p class="hint">{{localize "SLS.AudioHint"}}</p>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "SLS.FieldFit"}}</label>
+    <div class="form-fields">
+      <select name="mediaFit">
+        {{#each fitOptions}}
+        <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <p class="hint">{{localize "SLS.FitHint"}}</p>
+  </div>
+
+</fieldset>
+
+<fieldset class="sls-section">
+    <legend>Text Configuration</legend>
+
+  <div class="sls-inline-row sls-text-controls">
+    <div class="sls-text-stack">
+      <div class="form-group">
+        <label>{{localize "SLS.FieldFontColor"}}</label>
+        <div class="form-fields">
+          <input type="color" name="fontColor" value="{{data.fontColor}}" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>{{localize "SLS.FieldFontSize"}}</label>
+        <div class="form-fields">
+          <input type="number" name="fontSize" value="{{data.fontSize}}" min="8" max="200" step="1" />
+          <span class="units">px</span>
+        </div>
+      </div>
+
+      <div class="sls-style-actions">
+        <button type="button" class="sls-apply-style" data-action="applyTextStyle" data-tooltip="{{localize 'SLS.ApplyToSelectionTooltip'}}">
+          <i class="fa-solid fa-check"></i>
+          {{localize "SLS.ApplyToSelection"}}
+        </button>
+        <button type="button" class="sls-clear-style" data-action="clearTextStyle" data-tooltip="{{localize 'SLS.ClearSelectionStyleTooltip'}}">
+          <i class="fa-solid fa-eraser"></i>
+          {{localize "SLS.ClearSelectionStyle"}}
+        </button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>{{localize "SLS.FieldTextPosition"}}</label>
+      <div class="sls-position-grid">
+        {{#each positionOptions}}
+        <label class="sls-position-cell" data-position="{{value}}">
+          <input type="radio" name="textPosition" value="{{value}}" {{#if selected}}checked{{/if}} />
+          <span class="sls-position-dot"></span>
+        </label>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group sls-text-fullwidth">
+    <label>{{localize "SLS.FieldText"}}</label>
+
+    <input type="hidden" name="text" value="{{data.text}}" />
+    <input type="hidden" name="textAlign" value="{{data.textAlign}}" />
+    <input type="hidden" name="textVerticalAlign" value="{{data.textVerticalAlign}}" />
+
+  <div class="sls-rich-toolbar">
+    <button type="button" data-action="formatText" data-format="bold" data-tooltip="{{localize 'SLS.Bold'}}">
+      <b>B</b>
+    </button>
+
+    <button type="button" data-action="formatText" data-format="italic" data-tooltip="{{localize 'SLS.Italic'}}">
+      <i>I</i>
+    </button>
+
+    <button type="button" data-action="formatText" data-format="underline" data-tooltip="{{localize 'SLS.Underline'}}">
+      <u>U</u>
+    </button>
+
+    <span class="sls-toolbar-separator"></span>
+
+    <button type="button" data-action="setAlign" data-align="left" class="{{#if data.textAlignLeft}}active{{/if}}">
+      <i class="fa-solid fa-align-left"></i>
+    </button>
+
+    <button type="button" data-action="setAlign" data-align="center" class="{{#if data.textAlignCenter}}active{{/if}}">
+      <i class="fa-solid fa-align-center"></i>
+    </button>
+
+    <button type="button" data-action="setAlign" data-align="right" class="{{#if data.textAlignRight}}active{{/if}}">
+      <i class="fa-solid fa-align-right"></i>
+    </button>
+
+    <span class="sls-toolbar-separator"></span>
+
+    <button type="button" data-action="setVerticalAlign" data-valign="top" class="{{#if data.textVerticalAlignTop}}active{{/if}}">
+      <i class="fa-solid fa-arrow-up"></i>
+    </button>
+
+    <button type="button" data-action="setVerticalAlign" data-valign="middle" class="{{#if data.textVerticalAlignMiddle}}active{{/if}}">
+      <i class="fa-solid fa-arrows-up-down"></i>
+    </button>
+
+    <button type="button" data-action="setVerticalAlign" data-valign="bottom" class="{{#if data.textVerticalAlignBottom}}active{{/if}}">
+      <i class="fa-solid fa-arrow-down"></i>
+    </button>
+  </div>
+
+  <div class="sls-rich-editor-frame">
+    <div
+      class="sls-rich-editor"
+      contenteditable="true"
+      role="textbox"
+      aria-label="{{localize 'SLS.FieldText'}}"
+      data-placeholder="{{localize 'SLS.TextPlaceholder'}}"
+    >{{{data.text}}}</div>
+  </div>
+</div>
+
+</fieldset>
+
+<fieldset class="sls-section">
+    <legend>Timing Configuration</legend>
+  <div class="form-group">
+    <label>{{localize "SLS.FieldLoop"}}</label>
+    <div class="form-fields">
+      <input type="checkbox" name="loop" {{#if data.loop}}checked{{/if}} />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>{{localize "SLS.FieldDuration"}}</label>
+    <div class="form-fields">
+      <input type="number" name="duration" value="{{data.duration}}" min="0" step="1" placeholder="{{localize 'SLS.DurationPlaceholder'}}" />
+    </div>
+    <p class="hint">{{localize "SLS.DurationHint"}}</p>
+  </div>
+
+<div class="form-group">
+  <label>{{localize "SLS.FieldFadeIn"}}</label>
+  <div class="form-fields">
+    <input type="number" name="fadeIn" value="{{data.fadeIn}}" min="0" step="100" />
+  </div>
+  <p class="hint">{{localize "SLS.FadeInHint"}}</p>
+</div>
+
+<div class="form-group">
+  <label>{{localize "SLS.FieldFadeOut"}}</label>
+  <div class="form-fields">
+    <input type="number" name="fadeOut" value="{{data.fadeOut}}" min="0" step="100" />
+  </div>
+  <p class="hint">{{localize "SLS.FadeOutHint"}}</p>
+</div>
+
+</fieldset>
+
+</section>

@@ -1,0 +1,542 @@
+/* ===== Overlay ===== */
+
+.sls-config {
+  color: #7d7d56;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+.sls-config .sls-form {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+  padding-right: 0.4rem;
+}
+
+.sls-config .sls-footer {
+  flex: 0 0 auto;
+}
+
+.sls-config .sls-section {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid var(--color-border-light-tertiary, #dc1f1f);
+  border-radius: 6px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.sls-config .sls-section legend {
+  width: 100%;
+  color: #d2bf6d;
+  font-weight: bold;
+  font-size: 0.95em;
+  padding: 0 0.4rem;
+}
+
+.sls-config .form-group {
+  margin-bottom: 0.6rem;
+}
+
+#sls-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #000;
+  overflow: hidden;
+  display: grid;
+  pointer-events: auto;
+  user-select: none;
+}
+
+#sls-overlay .sls-image,
+#sls-overlay .sls-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#sls-overlay.sls-fit-contain  .sls-image,
+#sls-overlay.sls-fit-contain  .sls-video { object-fit: contain; }
+
+#sls-overlay.sls-fit-cover    .sls-image,
+#sls-overlay.sls-fit-cover    .sls-video { object-fit: cover; }
+
+#sls-overlay.sls-fit-fill     .sls-image,
+#sls-overlay.sls-fit-fill     .sls-video { object-fit: fill; }
+
+#sls-overlay.sls-fit-none     .sls-image,
+#sls-overlay.sls-fit-none     .sls-video { object-fit: none; }
+
+#sls-overlay .sls-audio {
+  display: none;
+}
+
+#sls-overlay .sls-text {
+  position: absolute;
+  min-height: 20vh;
+  z-index: 2;
+  max-width: 80vw;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+  font-family: var(--font-primary, "Signika", sans-serif);
+  white-space: pre-wrap;
+  pointer-events: none;
+}
+
+/* Text position (5x5 anchor) */
+#sls-overlay.sls-position-top-left      .sls-text { top: 5%;  left: 5vw;   transform: none; text-align: left; }
+#sls-overlay.sls-position-top-center    .sls-text { top: 5%;  left: 50%;   transform: translateX(-50%); }
+#sls-overlay.sls-position-top-right     .sls-text { top: 5%;  right: 5vw;  transform: none; text-align: right; }
+#sls-overlay.sls-position-top-mid-left .sls-text { top: 5%;  left: 25%;   transform: translateX(-50%); }
+#sls-overlay.sls-position-top-mid-right .sls-text { top: 5%;  left: 75%;   transform: translateX(-50%); }
+
+#sls-overlay.sls-position-upper-left .sls-text { top: 25%; left: 5vw;   transform: translateY(-50%); text-align: left; }
+#sls-overlay.sls-position-upper-mid-left .sls-text { top: 25%; left: 25%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-upper-center .sls-text { top: 25%; left: 50%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-upper-mid-right .sls-text { top: 25%; left: 75%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-upper-right .sls-text { top: 25%; right: 5vw;  transform: translateY(-50%); text-align: right; }
+
+#sls-overlay.sls-position-middle-mid-left .sls-text { top: 50%;  left: 25%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-middle-mid-right .sls-text { top: 50%;  left: 75%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-middle-left   .sls-text { top: 50%;  left: 5vw;   transform: translateY(-50%); text-align: left; }
+#sls-overlay.sls-position-middle-center .sls-text { top: 50%;  left: 50%;   transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-middle-right  .sls-text { top: 50%;  right: 5vw;  transform: translateY(-50%); text-align: right; }
+
+#sls-overlay.sls-position-lower-left .sls-text { top: 75%; left: 5vw;   transform: translateY(-50%); text-align: left; }
+#sls-overlay.sls-position-lower-mid-left .sls-text { top: 75%; left: 25%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-lower-center .sls-text { top: 75%; left: 50%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-lower-mid-right .sls-text { top: 75%; left: 75%;  transform: translate(-50%, -50%); }
+#sls-overlay.sls-position-lower-right .sls-text { top: 75%; right: 5vw;  transform: translateY(-50%); text-align: right; }
+
+
+#sls-overlay.sls-position-bottom-left   .sls-text { bottom: 5%; left: 5vw;  transform: none; text-align: left; }
+#sls-overlay.sls-position-bottom-mid-left .sls-text { bottom: 5%; left: 25%; transform: translateX(-50%); }
+#sls-overlay.sls-position-bottom-center .sls-text { bottom: 5%; left: 50%;  transform: translateX(-50%); }
+#sls-overlay.sls-position-bottom-mid-right .sls-text { bottom: 5%; left: 75%; transform: translateX(-50%); }
+#sls-overlay.sls-position-bottom-right  .sls-text { bottom: 5%; right: 5vw; transform: none; text-align: right; }
+
+.sls-position-preview {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.sls-position-preview.visible {
+  opacity: 1;
+}
+
+.sls-position-preview::after {
+  content: "";
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border-radius: 30%;
+  background: rgba(166, 78, 5, 0.95);
+  border: 3px solid rgb(172, 144, 144);
+  box-shadow:
+    0 0 12px rgba(166, 78, 5, 0.95),
+    0 0 28px rgba(166, 78, 5, 0.65);
+  transform: translate(-50%, -50%);
+  animation: sls-preview-pulse 1300ms ease-in-out infinite;
+}
+
+@keyframes sls-preview-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.75;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.18);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.75;
+  }
+}
+
+/* 5x5 preview marker positions */
+.sls-position-preview.sls-position-top-left::after { top: 5%; left: 5%; }
+.sls-position-preview.sls-position-top-mid-left::after { top: 5%; left: 25%; }
+.sls-position-preview.sls-position-top-center::after { top: 5%; left: 50%; }
+.sls-position-preview.sls-position-top-mid-right::after { top: 5%; left: 75%; }
+.sls-position-preview.sls-position-top-right::after { top: 5%; left: 95%; }
+
+.sls-position-preview.sls-position-upper-left::after { top: 25%; left: 5%; }
+.sls-position-preview.sls-position-upper-mid-left::after { top: 25%; left: 25%; }
+.sls-position-preview.sls-position-upper-center::after { top: 25%; left: 50%; }
+.sls-position-preview.sls-position-upper-mid-right::after { top: 25%; left: 75%; }
+.sls-position-preview.sls-position-upper-right::after { top: 25%; left: 95%; }
+
+.sls-position-preview.sls-position-middle-left::after { top: 50%; left: 5%; }
+.sls-position-preview.sls-position-middle-mid-left::after { top: 50%; left: 25%; }
+.sls-position-preview.sls-position-middle-center::after { top: 50%; left: 50%; }
+.sls-position-preview.sls-position-middle-mid-right::after { top: 50%; left: 75%; }
+.sls-position-preview.sls-position-middle-right::after { top: 50%; left: 95%; }
+
+.sls-position-preview.sls-position-lower-left::after { top: 75%; left: 5%; }
+.sls-position-preview.sls-position-lower-mid-left::after { top: 75%; left: 25%; }
+.sls-position-preview.sls-position-lower-center::after { top: 75%; left: 50%; }
+.sls-position-preview.sls-position-lower-mid-right::after { top: 75%; left: 75%; }
+.sls-position-preview.sls-position-lower-right::after { top: 75%; left: 95%; }
+
+.sls-position-preview.sls-position-bottom-left::after { top: 95%; left: 5%; }
+.sls-position-preview.sls-position-bottom-mid-left::after { top: 95%; left: 25%; }
+.sls-position-preview.sls-position-bottom-center::after { top: 95%; left: 50%; }
+.sls-position-preview.sls-position-bottom-mid-right::after { top: 95%; left: 75%; }
+.sls-position-preview.sls-position-bottom-right::after { top: 95%; left: 95%; }
+
+#sls-overlay .sls-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+#sls-overlay .sls-close:hover {
+  background: rgba(180, 30, 30, 0.85);
+  transform: scale(1.05);
+}
+
+.sls-config .sls-inline-row {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+}
+
+.sls-config .sls-inline-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.sls-config .sls-text-controls .form-group {
+  flex: 0 0 auto;
+}
+
+.sls-config .sls-text-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.sls-config .sls-text-stack .form-group {
+  align-items: center;
+  text-align: center;
+}
+
+.sls-config .sls-text-stack .form-fields {
+  justify-content: center;
+  position: relative;
+}
+
+.sls-config .sls-text-stack .form-fields .units {
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 0.4rem;
+}
+
+.sls-config .sls-style-actions {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+
+.sls-config .sls-style-actions button {
+  flex: 0 0 auto;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.85em;
+}
+
+.sls-config .sls-text-fullwidth {
+  flex-direction: column;
+}
+
+.sls-config .sls-text-fullwidth label {
+  margin-bottom: 0.3rem;
+}
+
+.sls-config .sls-file-row {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.sls-config .sls-file-row input[type="text"] {
+  flex: 1;
+}
+
+.sls-config .sls-browse {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: var(--input-height, 2rem);
+  padding: 0;
+}
+
+.sls-config .units {
+  margin-left: 0.4rem;
+  opacity: 0.7;
+}
+
+.sls-config input[type="color"] {
+  width: 4rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--color-border-light-tertiary, #999);
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sls-config input[name="fontSize"] {
+  width: 3rem;
+  flex: none;
+}
+
+/* 5x5 position picker */
+.sls-config .sls-position-grid {
+display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 0.35rem;
+  width: 12rem;         
+  aspect-ratio: 1 / 1;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border-light-tertiary, #888);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.sls-config .sls-position-cell {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  transition: background 100ms ease;
+}
+
+.sls-config .sls-position-cell:hover {
+  background: rgba(120, 160, 220, 0.6);
+}
+
+.sls-config .sls-position-cell input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sls-config .sls-position-dot {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  transition: background 100ms ease, transform 100ms ease;
+}
+
+.sls-config .sls-position-cell input[type="radio"]:checked ~ .sls-position-dot {
+  background: var(--color-warm-2, #b73f3f);
+  transform: scale(1.4);
+}
+
+.sls-config .hint {
+  font-size: 0.85em;
+  opacity: 0.75;
+  margin: 0.2rem 0 0 0;
+}
+
+.sls-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.sls-footer-left,
+.sls-footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.sls-footer button {
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.sls-footer-left {
+  gap: 0.5rem;
+}
+
+.sls-reset-btn {
+  opacity: 0.8;
+}
+
+/* ===== Preset loader (in config form) ===== */
+
+.sls-config .sls-preset-loader {
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #888);
+}
+
+.sls-config .sls-preset-loader .form-fields {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.sls-config .sls-preset-loader select {
+  flex: 1;
+}
+
+.sls-config .sls-preset-loader button {
+  flex: 0 0 auto;
+  width: 2rem;
+  height: var(--input-height, 2rem);
+  padding: 0;
+}
+
+.sls-config .sls-preset-name-row {
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #888);
+}
+
+/* ===== Presets manager ===== */
+
+.sls-presets-content {
+  padding: 0.5rem;
+}
+
+.sls-preset-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.sls-preset-entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.4rem;
+  border-bottom: 1px solid var(--color-border-light-tertiary, #555);
+}
+
+.sls-preset-entry:last-child {
+  border-bottom: none;
+}
+
+.sls-preset-name {
+  font-weight: 500;
+}
+
+.sls-preset-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.sls-preset-actions button {
+  width: 1.8rem;
+  height: 1.8rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.sls-no-presets {
+  text-align: center;
+  opacity: 0.6;
+  font-style: italic;
+  padding: 1rem 0;
+}
+
+.sls-create-preset {
+  margin-top: 0.8rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+.sls-config .sls-rich-toolbar {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 0.35rem;
+}
+
+.sls-config .sls-rich-toolbar button {
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sls-config .sls-rich-editor {
+  width: 100%;
+  min-height: 8rem;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border-light-tertiary, #888);
+  border-radius: 4px;
+  background: var(--color-bg-option, rgba(255, 255, 255, 0.08));
+  color: inherit;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  cursor: text;
+}
+
+.sls-config .sls-rich-editor:empty::before {
+  content: attr(data-placeholder);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.sls-config .sls-rich-toolbar button.active,
+.sls-config .sls-rich-toolbar button[aria-pressed="true"] {
+  background: rgba(120, 160, 220, 0.65);
+  border-color: rgba(120, 160, 220, 0.95);
+  box-shadow: 0 0 0 1px rgba(120, 160, 220, 0.8);
+}
+
+.sls-toolbar-separator {
+  width: 1px;
+  height: 1.5rem;
+  background: rgba(255,255,255,0.2);
+  margin: 0 0.25rem;
+}

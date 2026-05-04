@@ -1,0 +1,27 @@
+<section class="sls-presets-content">
+
+  {{#if hasPresets}}
+  <ol class="sls-preset-list">
+    {{#each presets}}
+    <li class="sls-preset-entry" data-preset-id="{{id}}">
+      <span class="sls-preset-name">{{name}}</span>
+      <div class="sls-preset-actions">
+        <button type="button" data-action="editPreset" data-preset-id="{{id}}" data-tooltip="{{localize 'SLS.EditPreset'}}">
+          <i class="fa-solid fa-pen"></i>
+        </button>
+        <button type="button" data-action="deletePreset" data-preset-id="{{id}}" data-tooltip="{{localize 'SLS.DeletePreset'}}">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </div>
+    </li>
+    {{/each}}
+  </ol>
+  {{else}}
+  <p class="sls-no-presets">{{localize "SLS.NoPresets"}}</p>
+  {{/if}}
+
+  <button type="button" class="sls-create-preset" data-action="createPreset">
+    <i class="fa-solid fa-plus"></i> {{localize "SLS.CreatePreset"}}
+  </button>
+
+</section>
