@@ -21,8 +21,8 @@ A flexible and lightweight module for creating custom scene loading screens with
 
 ### 1. Open the Configuration
 
-* Open a **Scene Configuration**
-* Navigate to the **Scene Loading Screen** settings
+* Right click on a pre existing scene
+* Click on "create Loading Screen" (or edit if your sceen already has one)
 
 ---
 
@@ -60,7 +60,7 @@ Use the 📁 button to browse files.
 
 #### 🎨 Styling
 
-* Set **font size** and **colour**
+* Set **font size** and **colour** first (does not work after highlighting)
 * Select part of the text and click **Apply** to style only that section
 
 ---
