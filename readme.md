@@ -58,11 +58,12 @@ Use the 📁 button to browse files.
 * Select part of the text and click **Apply** to style only that section
 
 <p align="center">
-  <video src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/videos/text-configuration-demo.mp4"
-         controls width="600"
-         poster="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-text.png">
-    <a href="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/videos/text-configuration-demo.mp4">Download the demo</a>.
-  </video>
+  <a href="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/videos/text-configuration-demo.mp4">
+    <img src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-text.png"
+         alt="Watch the text configuration demo" width="600">
+  </a>
+  <br>
+  <em>Click the image to watch the text configuration demo.</em>
 </p>
 
 ---
