@@ -84,5 +84,7 @@
   "SLS.SaveDefaultsHint": "Save the current form values as your baseline for new loading screens.",
   "SLS.DefaultsSaved": "Current values saved as your new defaults.",
   "SLS.SettingsDefaultsName": "Custom Defaults",
-  "SLS.SettingsDefaultsHint": "Your saved baseline values for new loading screens."
+  "SLS.SettingsDefaultsHint": "Your saved baseline values for new loading screens.",
+  "SLS.SettingsDebugName": "Verbose console logging",
+  "SLS.SettingsDebugHint": "Enable detailed console messages for troubleshooting. Off by default."
 }

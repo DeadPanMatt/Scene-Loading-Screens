@@ -4,7 +4,7 @@ All notable changes to **Scene Loading Screens** are documented in this file.
 
 ---
 
-## 2026-05-06 - (v1.2.3)
+## 2026-05-06 - (v1.2.2)
 
 ### Added
 - Optional per-scene loading **progress bar** that overlays the selected media. Toggle via the new "Show loading progress bar" checkbox in the Timing section of the scene config form.

@@ -21,8 +21,8 @@ A flexible and lightweight module for creating custom scene loading screens with
 
 ### 1. Open the Configuration
 
-* Right click on a pre existing scene
-* Click on "create Loading Screen" (or edit if your sceen already has one)
+* Right-click on a pre-existing scene
+* Click on "Create Loading Screen" (or "Edit Loading Screen" if your scene already has one)
 
 ---
 
@@ -33,7 +33,7 @@ You can add:
 * **Image** (background)
 * **Video** (autoplays)
 * **Audio** (optional, loops if enabled)
-* **Volume** adjusts the volume level of slected media on a scale of 0-100
+* **Volume** adjusts the volume level of selected media on a scale of 0–100
 
 Use the 📁 button to browse files.
 
@@ -66,7 +66,7 @@ https://github.com/user-attachments/assets/9cde9252-eae9-4b5e-8e79-94f6d7dc1098
 * **Loop**: Repeat video/audio
 * **Duration**: Auto-close after X seconds
 * **Fade In / Out**: Smooth transitions (ms)
-* **Enable or disable the Loading Progressbar and decide what mesage to write next to it
+* **Loading progress bar**: enable or disable the loading progress bar and choose the message shown next to it.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-timing.png"

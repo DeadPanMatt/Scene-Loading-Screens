@@ -1,9 +1,7 @@
-import { MODULE_ID, FLAG_KEY, SOCKET_NAME } from "./constants.js";
+import { MODULE_ID, FLAG_KEY, SOCKET_NAME, debug } from "./constants.js";
 import { LoadingScreenConfigApp } from "./config-app.js";
 import { PresetsManagerApp } from "./presets-app.js";
 import { Overlay } from "./overlay.js";
-
-console.log(`${MODULE_ID} | main.js loaded`);
 
 function getSceneConfig(scene) {
   return scene?.getFlag(MODULE_ID, FLAG_KEY) ?? null;
@@ -87,7 +85,14 @@ function handleSocket(payload) {
 }
 
 Hooks.once("init", () => {
-  console.log(`${MODULE_ID} | initialising`);
+  game.settings.register(MODULE_ID, "debug", {
+    name: "SLS.SettingsDebugName",
+    hint: "SLS.SettingsDebugHint",
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false
+  });
 
   game.settings.register(MODULE_ID, "customDefaults", {
     name: "SLS.SettingsDefaultsName",
@@ -130,7 +135,7 @@ Hooks.once("ready", () => {
     setSceneConfig,
     clearSceneConfig
   };
-  console.log(`${MODULE_ID} | ready — debug API at game.modules.get('${MODULE_ID}').api`);
+  debug(`ready — API at game.modules.get('${MODULE_ID}').api`);
 });
 
 function extractSceneFromLi(li) {
@@ -147,7 +152,7 @@ function extractSceneFromLi(li) {
     el.closest?.("[data-entry-id], [data-document-id]")?.dataset?.entryId ??
     el.closest?.("[data-entry-id], [data-document-id]")?.dataset?.documentId;
   const scene = game.scenes.get(id);
-  console.log(`${MODULE_ID} | extractSceneFromLi → id=${id}, scene=${scene?.name ?? "none"}`);
+  debug(`extractSceneFromLi → id=${id}, scene=${scene?.name ?? "none"}`);
   return scene;
 }
 
@@ -217,10 +222,10 @@ const CONTEXT_HOOK_NAMES = [
 
 for (const hookName of CONTEXT_HOOK_NAMES) {
   Hooks.on(hookName, (...args) => {
-    console.log(`${MODULE_ID} | hook fired: ${hookName}`, args);
+    debug(`hook fired: ${hookName}`, args);
     const options = args.find(a => Array.isArray(a));
     if (!options) {
-      console.warn(`${MODULE_ID} | ${hookName} — no options array found in args`);
+      debug(`${hookName} — no options array found in args`);
       return;
     }
     if (hookName.includes("Folder")) return;
