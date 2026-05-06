@@ -3,7 +3,7 @@
   "title": "Scene Loading Screens",
   "description": "Per-scene customisable loading screen overlay (image, video, audio, text) triggered manually by the GM and shown to all players until dismissed.",
   "version": "1.2.2",
-  "manifestPlusVersion": "1.2.2",
+  "manifestPlusVersion": "1.2.0",
   "authors": [
     {
       "name": "DeadPanMatt"
