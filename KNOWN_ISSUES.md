@@ -7,15 +7,14 @@ Entries are grouped by status. Each entry will describe the symptom, optional re
 ---
 
 Template for raising an issue (you don't have to fill in everything but the more information, the better).
-<!--
-### Short title of the issue
+
+- **Short title of the issue**
 - **Reported:** YYYY-MM-DD
 - **Affects:** module version(s) / Foundry version(s) / browser(s)
 - **Symptom:** What the user sees.
 - **Reproduction:** Steps to trigger it.
 - **Workaround:** What to do in the meantime, if anything.
 - **Notes:** Suspected cause, related code paths, links.
--->
 
 ---
 
@@ -25,20 +24,14 @@ Template for raising an issue (you don't have to fill in everything but the more
 
 _Issues with a fix underway._
 
-<!-- Place Holder -->
-
 ---
 
 ## Resolved
 
 _Issues that have been fixed. Move entries here when the fix is released, and reference the changelog entry._
 
-<!-- Place Holder -->
-
 ---
 
 ## Won't fix
 
 _Limitations that are intentional or out of scope._
-
-<!-- Place Holder -->
