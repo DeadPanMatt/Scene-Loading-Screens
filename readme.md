@@ -57,14 +57,13 @@ Use the 📁 button to browse files.
 * Set **font size** and **colour** first (does not work after highlighting)
 * Select part of the text and click **Apply** to style only that section
 
-<p align="center">
-  <a href="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/videos/text-configuration-demo.mp4">
-    <img src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-text.png"
-         alt="Watch the text configuration demo" width="600">
-  </a>
-  <br>
-  <em>Click the image to watch the text configuration demo.</em>
-</p>
+
+
+https://github.com/user-attachments/assets/9cde9252-eae9-4b5e-8e79-94f6d7dc1098
+
+
+
+
 
 ---
 
