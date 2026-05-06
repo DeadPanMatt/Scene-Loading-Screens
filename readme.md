@@ -71,6 +71,7 @@ Use the 📁 button to browse files.
 * **Loop**: Repeat video/audio
 * **Duration**: Auto-close after X seconds
 * **Fade In / Out**: Smooth transitions (ms)
+* **Enable or disable the Loading Progressbar and decide what mesage to write next to it
 
 ---
 

@@ -4,6 +4,9 @@ export class Overlay {
   static element = null;
   static timeoutId = null;
   static fadeTimeoutId = null;
+  static progressEl = null;
+  static progressFillEl = null;
+  static _trackingAttached = false;
 
   static show(config) {
     if (!config) return;
@@ -79,6 +82,41 @@ if (config.text) {
   
 }
 
+    if (config.showProgressBar) {
+      const wrap = document.createElement("div");
+      wrap.classList.add("sls-progress-wrap");
+
+      const header = document.createElement("div");
+      header.classList.add("sls-progress-header");
+
+      const spinner = document.createElement("i");
+      spinner.classList.add("sls-spinner", "fa-solid", "fa-spinner");
+      header.appendChild(spinner);
+
+      const labelText = (config.progressLabel ?? "").toString().trim();
+      if (labelText) {
+        const label = document.createElement("span");
+        label.classList.add("sls-progress-label");
+        label.textContent = labelText;
+        header.appendChild(label);
+      }
+
+      const bar = document.createElement("div");
+      bar.classList.add("sls-progress");
+      const fill = document.createElement("div");
+      fill.classList.add("sls-progress-fill");
+      fill.style.width = "0%";
+      bar.appendChild(fill);
+
+      wrap.appendChild(header);
+      wrap.appendChild(bar);
+      el.appendChild(wrap);
+
+      Overlay.progressEl = bar;
+      Overlay.progressFillEl = fill;
+      Overlay.attachProgressTracking();
+    }
+
     if (game.user.isGM) {
       const btn = document.createElement("button");
       btn.type = "button";
@@ -145,6 +183,8 @@ if (config.text) {
       if (Overlay.element === el) {
         Overlay.element = null;
       }
+      Overlay.progressEl = null;
+      Overlay.progressFillEl = null;
     };
 
     if (immediate || fadeOut <= 0) {
@@ -158,6 +198,43 @@ if (config.text) {
 
     Overlay.fadeTimeoutId = setTimeout(remove, fadeOut);
   }
+  static updateProgress(pct) {
+    if (!Overlay.progressFillEl) return;
+    const n = Number(pct);
+    if (!Number.isFinite(n)) return;
+    const clamped = Math.max(0, Math.min(100, n));
+    Overlay.progressFillEl.style.width = `${clamped}%`;
+  }
+
+  static attachProgressTracking() {
+    if (Overlay._trackingAttached) return;
+    Overlay._trackingAttached = true;
+
+    Hooks.on("canvasInit", () => {
+      if (Overlay.progressFillEl) Overlay.updateProgress(0);
+    });
+    Hooks.on("canvasReady", () => {
+      if (Overlay.progressFillEl) Overlay.updateProgress(100);
+    });
+
+    const SN = globalThis.SceneNavigation
+      ?? foundry?.applications?.ui?.SceneNavigation
+      ?? null;
+    if (SN?.displayProgressBar && !SN._slsWrapped) {
+      const orig = SN.displayProgressBar;
+      SN.displayProgressBar = function (args) {
+        try {
+          if (Overlay.progressFillEl && Number.isFinite(args?.pct)) {
+            Overlay.updateProgress(args.pct);
+          }
+        } catch (_) {
+        }
+        return orig.call(this, args);
+      };
+      SN._slsWrapped = true;
+    }
+  }
+
  static sanitizeRichText(html) {
     const template = document.createElement("template");
     template.innerHTML = html ?? "";

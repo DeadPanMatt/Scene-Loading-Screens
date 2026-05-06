@@ -225,6 +225,60 @@
 .sls-position-preview.sls-position-bottom-mid-right::after { top: 95%; left: 75%; }
 .sls-position-preview.sls-position-bottom-right::after { top: 95%; left: 95%; }
 
+#sls-overlay .sls-progress-wrap {
+  position: absolute;
+  left: 8vw;
+  right: 8vw;
+  bottom: 6vh;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  pointer-events: none;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.85);
+}
+
+#sls-overlay .sls-progress-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  color: #fff;
+  font-family: var(--font-primary, "Signika", sans-serif);
+  font-size: 1.05rem;
+}
+
+#sls-overlay .sls-spinner {
+  display: inline-block;
+  animation: sls-spin 1s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+#sls-overlay .sls-progress-label {
+  white-space: nowrap;
+}
+
+#sls-overlay .sls-progress {
+  position: relative;
+  height: 14px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.65);
+}
+
+#sls-overlay .sls-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #b73f3f 0%, #d2bf6d 100%);
+  transition: width 180ms ease;
+}
+
+@keyframes sls-spin {
+  to { transform: rotate(360deg); }
+}
+
 #sls-overlay .sls-close {
   position: absolute;
   top: 1rem;
@@ -428,7 +482,7 @@ display: grid;
   opacity: 0.8;
 }
 
-/* ===== Preset loader (in config form) ===== */
+/* Preset loader (in config form)*/
 
 .sls-config .sls-preset-loader {
   margin-bottom: 1rem;
@@ -459,7 +513,7 @@ display: grid;
   border-bottom: 1px solid var(--color-border-light-tertiary, #888);
 }
 
-/* ===== Presets manager ===== */
+/* Presets manager*/
 
 .sls-presets-content {
   padding: 0.5rem;

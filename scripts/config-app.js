@@ -18,7 +18,9 @@ export const FACTORY_DEFAULTS = {
   duration: null,
   fadeIn: 500,
   fadeOut: 500,
-  volume: 1
+  volume: 1,
+  showProgressBar: false,
+  progressLabel: "Loading…"
 };
 
 function getDefaults() {
@@ -323,7 +325,9 @@ export class LoadingScreenConfigApp extends HandlebarsApplicationMixin(Applicati
       volume: (() => {
         const v = raw.volume === "" || raw.volume == null ? FACTORY_DEFAULTS.volume : Number(raw.volume);
         return Number.isFinite(v) ? Math.min(1, Math.max(0, v)) : FACTORY_DEFAULTS.volume;
-      })()
+      })(),
+      showProgressBar: !!raw.showProgressBar,
+      progressLabel: (raw.progressLabel ?? "").toString()
     };
   }
 

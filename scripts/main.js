@@ -46,8 +46,12 @@ async function play(sceneId) {
   game.socket.emit(SOCKET_NAME, payload);
   Overlay.show(config);
 
-  // Give clients a moment to render overlay
-  await new Promise(resolve => setTimeout(resolve, 250));
+  // Give clients time to receive the socket message AND for the overlay
+  // fade-in to fully cover the canvas before scene activation triggers
+  // texture loading (which causes the visible flicker on slower clients).
+  const fadeIn = Math.max(0, Number(config.fadeIn) || 0);
+  const preActivateDelay = Math.max(1000, fadeIn + 250);
+  await new Promise(resolve => setTimeout(resolve, preActivateDelay));
 
   // Then activate scene in background
   await scene.activate();
@@ -115,6 +119,7 @@ Hooks.once("init", () => {
 
 Hooks.once("ready", () => {
   game.socket.on(SOCKET_NAME, handleSocket);
+  Overlay.attachProgressTracking();
 
   const mod = game.modules.get(MODULE_ID);
   mod.api = {
