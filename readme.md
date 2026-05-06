@@ -130,11 +130,3 @@ This module integrates seamlessly with Foundry's scene system using flags and se
 ---
 
 Enjoy building immersive loading experiences! 🎬
-
----
-
-## 🖼️ Screenshots & demo
-
-> The blocks below are ready to be moved into the relevant sections above. Each one uses absolute raw GitHub URLs so the images and video render correctly both on github.com and when the readme is fetched by Foundry's module browser via the `readme` field in `module.json`.
-
-### Media setup
