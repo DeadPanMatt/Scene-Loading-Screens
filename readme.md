@@ -57,13 +57,7 @@ Use the 📁 button to browse files.
 * Set **font size** and **colour** first (does not work after highlighting)
 * Select part of the text and click **Apply** to style only that section
 
-
-
 https://github.com/user-attachments/assets/9cde9252-eae9-4b5e-8e79-94f6d7dc1098
-
-
-
-
 
 ---
 
