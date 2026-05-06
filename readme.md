@@ -37,32 +37,33 @@ You can add:
 
 Use the 📁 button to browse files.
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-media.png"
+       alt="Loading screen media setup" width="600">
+</p>
+
 ---
 
 ### 3. Configure Text
 
-#### ✏️ Enter Text
-
 * Use the rich text editor to add your message
 * Supports:
-
   * **Bold**
   * *Italic*
   * Underline
-
-#### 🎯 Positioning
-
 * Use the grid to place text anywhere on screen
-
-#### ↔️ Alignment
-
 * Horizontal: Left / Centre / Right
 * Vertical: Top / Middle / Bottom
-
-#### 🎨 Styling
-
 * Set **font size** and **colour** first (does not work after highlighting)
 * Select part of the text and click **Apply** to style only that section
+
+<p align="center">
+  <video src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/videos/text-configuration-demo.mp4"
+         controls width="600"
+         poster="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-text.png">
+    <a href="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/videos/text-configuration-demo.mp4">Download the demo</a>.
+  </video>
+</p>
 
 ---
 
@@ -73,6 +74,10 @@ Use the 📁 button to browse files.
 * **Fade In / Out**: Smooth transitions (ms)
 * **Enable or disable the Loading Progressbar and decide what mesage to write next to it
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-timing.png"
+       alt="Loading screen timing options" width="600">
+</p>
 ---
 
 ### 5. Preview
@@ -125,3 +130,11 @@ This module integrates seamlessly with Foundry's scene system using flags and se
 ---
 
 Enjoy building immersive loading experiences! 🎬
+
+---
+
+## 🖼️ Screenshots & demo
+
+> The blocks below are ready to be moved into the relevant sections above. Each one uses absolute raw GitHub URLs so the images and video render correctly both on github.com and when the readme is fetched by Foundry's module browser via the `readme` field in `module.json`.
+
+### Media setup

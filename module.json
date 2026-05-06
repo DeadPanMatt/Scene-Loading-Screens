@@ -2,7 +2,8 @@
   "id": "scene-loading-screens",
   "title": "Scene Loading Screens",
   "description": "Per-scene customisable loading screen overlay (image, video, audio, text) triggered manually by the GM and shown to all players until dismissed.",
-  "version": "1.2.0",
+  "version": "1.2.1",
+  "manifestPlusVersion": "1.2.1",
   "authors": [
     {
       "name": "DeadPanMatt"
@@ -25,9 +26,33 @@
       "path": "lang/en.json"
     }
   ],
+  "media": [
+    {
+      "type": "image",
+      "path": "media/images/loading-screen-media.png",
+      "caption": "Example loading screen media"
+    },
+
+   {
+      "type": "image",
+      "path": "media/images/loading-screen-timing.png",
+      "caption": "Example loading screen timing options"
+    },
+    {
+      "type": "video",
+      "path": "media/videos/text-configuration-demo.mp4",
+      "caption": "Text configuration demo"
+    }
+  ],
+  
   "socket": true,
   "url": "https://github.com/DeadPanMatt/scene-loading-screens",
   "manifest": "https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/module.json",
-  "download": "https://github.com/DeadPanMatt/scene-loading-screens/archive/refs/tags/v1.2.0.zip",
-  "license": "MIT"
+  "download": "https://github.com/DeadPanMatt/scene-loading-screens/archive/refs/tags/v1.2.1.zip",
+  "readme": "https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/readme.md",
+  "changelog": "https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/CHANGELOG.md",
+  "bugs": "https://github.com/DeadPanMatt/scene-loading-screens/issues",
+  "license": "MIT",
+  "conflicts": []
+  
 }

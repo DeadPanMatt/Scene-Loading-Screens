@@ -4,7 +4,7 @@ All notable changes to **Scene Loading Screens** are documented in this file.
 
 ---
 
-## 2026-05-06 - (v1.2.0)
+## 2026-05-06 - (v1.2.1)
 
 ### Added
 - Optional per-scene loading **progress bar** that overlays the selected media. Toggle via the new "Show loading progress bar" checkbox in the Timing section of the scene config form.
@@ -12,6 +12,7 @@ All notable changes to **Scene Loading Screens** are documented in this file.
 - Per-scene **progress bar label** field (free text, e.g. "Loading…"). Leaving it blank hides the label but keeps the spinner.
 - CSS **spinner** that rotates next to the label for as long as the loading screen is visible (animation runs purely from CSS; stops automatically when the overlay element is removed on close).
 - This change log added to acuratly depict the chnges made before / during release and chnages made in the future
+- Addition of images and videos to readme.md
 
 ### Changed
 - Pre-activation delay extended from a fixed 250 ms to `max(1000ms, fadeIn + 250)` so the overlay is fully faded in (and the socket message has reached all clients) before `scene.activate()` triggers texture loading. Eliminates the brief canvas flicker some users saw on slower clients.
