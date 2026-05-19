@@ -2,6 +2,10 @@
 
 All notable changes to **Scene Loading Screens** are documented in this file.
 
+--- 
+2026-05-19 - (1.3.0)
+- "KNOWN_ISSUES.md" replaced with "issues.md"
+
 ---
 
 ## 2026-05-19 - (v1.2.5)
