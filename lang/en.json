@@ -43,7 +43,7 @@
 
   "SLS.FadeInHint": "Milliseconds for the loading screen to fade in. Use 0 for instant.",
   "SLS.FadeOutHint": "Milliseconds for the loading screen to fade out. Use 0 for instant.",
-  "SLS.ShowProgressBarHint": "Overlay an accurate loading progress bar on the bottom of the loading screen while the scene's assets are loading.",
+  "SLS.ShowProgressBarHint": "Display a loading bar whilst the scene loads.",
   "SLS.PathPlaceholder": "path/to/file",
   "SLS.TextPlaceholder": "Text shown over the picture (line breaks preserved).",
   "SLS.DurationPlaceholder": "Leave blank for manual close",

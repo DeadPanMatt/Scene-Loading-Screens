@@ -53,5 +53,6 @@
   "changelog": "https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/CHANGELOG.md",
   "bugs": "https://github.com/DeadPanMatt/scene-loading-screens/issues",
   "license": "MIT",
+  "conflicts": []
   
 }
