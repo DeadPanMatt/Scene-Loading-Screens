@@ -1,23 +1,8 @@
-# Scene Loading Screens (SLS)
+# Scene Loading Screens
 
-A flexible and lightweight module for creating custom scene loading screens with images, video, audio, and styled text.
+A module for creating custom scene loading screens with images, video, audio, and text.
 
----
-
-## ✨ Features
-
-* 🎬 Image, video, and audio support
-* 📝 Rich text editor with formatting (bold, italic, underline)
-* 🎨 Custom font size and colour
-* 📍 Precise text positioning (grid-based)
-* ↔️ Horizontal & vertical text alignment
-* ⏱️ Configurable duration and fade in/out
-* 🔁 Looping media support
-* 💾 Presets for quick reuse
-
----
-
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Open the Configuration
 
@@ -35,7 +20,7 @@ You can add:
 * **Audio** (optional, loops if enabled)
 * **Volume** adjusts the volume level of selected media on a scale of 0–100
 
-Use the 📁 button to browse files.
+Use the folder button to browse files.
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/DeadPanMatt/scene-loading-screens/main/media/images/loading-screen-media.png"
@@ -76,7 +61,7 @@ https://github.com/user-attachments/assets/9cde9252-eae9-4b5e-8e79-94f6d7dc1098
 
 ### 5. Preview
 
-Click **Preview** to test your loading screen instantly.
+Click **Preview** to test your loading screen instantly (excluding the loading progress bar).
 
 ---
 
@@ -86,7 +71,7 @@ Click **Preview** to test your loading screen instantly.
 
 ---
 
-## 💾 Presets
+## Presets
 
 Presets are managed from Foundry’s settings menu:
 
@@ -102,25 +87,7 @@ Once created, presets can be loaded when configuring a scene loading screen.
 
 ---
 
-## 🧠 Tips
+## GM Controls
 
-* You can mix **global text styling** with **inline styled selections**
-* Use presets to maintain consistent branding or themes
-* Larger editor height makes vertical alignment easier to see
-
----
-
-## 🎮 GM Controls
-
-* GMs can manually close the loading screen via the ❌ button
+* GMs can manually close the loading screen via the "X" button
 * Players will automatically exit based on duration or GM action
-
----
-
-## 📦 Module Integration
-
-This module integrates seamlessly with Foundry's scene system using flags and settings — no additional setup required.
-
----
-
-Enjoy building immersive loading experiences! 🎬
